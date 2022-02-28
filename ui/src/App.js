@@ -1,14 +1,14 @@
-import './App.css';
+import './static/main.css';
 import Web3 from 'web3'
 import abi from './abi/reward.js'
+import Sidebar from './componant/sidebar.js'
+import MainIndex from './componant/main-index.js'
+import Profile from './componant/right-profile.js'
 
-function App() {
-
+const test = () => {
   
   const PRIVATE_KEY = '1b95ae5c385641c009c25f89ff62e7088854b5cc39a6107654a623a1039e249b';
   const END_POINT = 'https://ropsten.infura.io/v3/919227b4a0ce4359a847fdae2cebde84';
-
-
 
 
   const ContractAddress = '0x7Ddc333Cb0df7dACD866E44F3807aAEaAEcF3229';
@@ -39,21 +39,26 @@ function App() {
       ) 
       .then(req => console.log("req", req));
   }
+}
+
+
+function App() {
   /* web3.eth.accounts.signTransaction(rawTrx, PRIVATE_KEY)
     .then(signedTx => web3.eth.sendSignedTransaction(signedTx.rawTransaction))
     .then(req => {
       console.log(req);
     })
-
    */ 
+
   
 
 
-  
 
   return (
     <div className="App">
-      <button onClick={buttonClick}/> 
+      <Sidebar/>
+      <MainIndex/>
+      <Profile/>
 
     </div>
   );
