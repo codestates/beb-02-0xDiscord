@@ -2,6 +2,7 @@ import '../static/sidebar.css'
 import Log from '../assets/logo.svg'
 import { Icon } from '@iconify/react';
 import {useState, useEffect} from 'react'
+import { Link } from 'react-router-dom';
 
 function Sidebar() {
 
@@ -67,7 +68,7 @@ function Sidebar() {
           <div className="sidebar-link-icon-name">
             <Icon icon="ic:round-dashboard" color={style ? style[6]["icon"] : activeIconStyle} height="24" />
             <div style={style ? style[6]["text"] : activeTextStyle} className="sidebar-link-name" onClick={(e) => helo(6, e)}>
-              DashBoard
+              <Link to="/"> DashBoard </Link>
             </div>
           </div>
           <div style={style ? style[6]["line"] : activeLine}>
@@ -110,7 +111,7 @@ function Sidebar() {
           <div className="sidebar-link-icon-name">
           <Icon icon="gg:clapper-board" color={style ? style[2]["icon"] : deactiveIconStyle} height="24" />
             <div style={style ? style[2]["text"] : deactiveStyle} className="sidebar-link-name" onClick={(e) => helo(2, e)}>
-              Community
+              <Link to="/board" > Community </Link> 
             </div>
           </div>
           <div style={style ? style[2]["line"] : null}>

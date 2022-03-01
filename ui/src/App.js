@@ -4,7 +4,11 @@ import abi from './abi/reward.js'
 import Sidebar from './componant/sidebar.js'
 import MainIndex from './componant/main-index.js'
 import Profile from './componant/right-profile.js'
-
+import TopicView from './componant/board-view.js'
+import Write from './componant/board-write.js'
+import { Route, Routes, useNavigate } from 'react-router-dom';
+import Web3Token from 'web3-token'
+import Community from './componant/community.js'
 import {useState, useEffect} from 'react'
 
 const test = () => {
@@ -46,10 +50,11 @@ const test = () => {
 
 function App() {
 
-   const [acc, setAcc] = useState(() => JSON.parse(window.localStorage.getItem("account")));
+  const [acc, setAcc] = useState(() => JSON.parse(window.localStorage.getItem("account")));
   const [web3, setWeb3] = useState();
-
+  const [token, setToken] = useState(() => JSON.parse(window.localStorage.getItem("token")));
   
+  const navigate = useNavigate();
 
 
   const login_eth = async () => {
@@ -60,15 +65,27 @@ function App() {
 
     const accounts = await window.ethereum.request({method: 'eth_requestAccounts'})
     const account = accounts[0];
-    const web3 = new Web3(window.ethereum);
+    const web3 =  new Web3(window.ethereum);
+    const token_app = await Web3Token.sign(msg => web3.eth.personal.sign(msg, account), '1d');
+
     setAcc(account);
     setWeb3(web3);
+    setToken(token_app);
+    window.localStorage.setItem("token", JSON.stringify(token));
+    window.localStorage.setItem("account", JSON.stringify(account));
+  }
+
+  const logout_eth = () => {
+    console.log(token);
+    window.localStorage.removeItem("token")
+    window.localStorage.removeItem("account")
+    setToken(() => JSON.parse(window.localStorage.getItem("token")));
+    setAcc(() => JSON.parse(window.localStorage.getItem("account")));
+    setWeb3();
+    // eslint-disable-next-line no-undef
   }
 
 
-  useEffect(() => {
-    window.localStorage.setItem("account", JSON.stringify(acc));
-  }, [web3, acc]);
 
 
  
@@ -78,8 +95,13 @@ function App() {
   return (
     <div className="App">
       <Sidebar/>
-      <MainIndex acc={acc} />
-      <Profile login={login_eth}/>
+      <Routes>
+        <Route path="/" element={<MainIndex acc={acc} />}/>
+        <Route path="/board/view/:id" element={<TopicView/> } />
+        <Route path="/board" element={<Community token={token} login_eth={login_eth}/>}/>
+        <Route path="/write" element={<Write login_eth={login_eth} token={token} account={acc}/>}/>
+      </Routes>
+      <Profile login={login_eth} logout_eth={logout_eth} token={token} acc={acc}/>
 
     </div>
   );

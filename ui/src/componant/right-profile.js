@@ -1,11 +1,17 @@
 import '../static/right-profile.css'
+import {useState} from 'react'
 
-function Profile({login}) {
+function Profile({login, logout_eth, token}) {
+
 
   return (
     <div className="right-profile">
-      <button onClick={login}> cak</button>
-
+      {
+        token == null ?
+        <button onClick={() => login()}> log in </button>
+        :
+        <button onClick={() => logout_eth()}> log out </button>
+      }
     </div>
   )
 

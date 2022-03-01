@@ -2,19 +2,20 @@ import sys
 from datetime import datetime
 
 
-
 sys.path.append('..')
 sys.path.append('.')
 
-from fastapi import APIRouter
+from fastapi import Depends, APIRouter, HTTPException
 from config.db import conn
 from models.model import users, statis, client
 from pydantic import BaseModel
+from web3_token import Web3Token
 
 class Board_add_item(BaseModel):
     etherAddress: str
     title: str
     content: str
+    token: str
 
 
 class Item(BaseModel):
@@ -38,6 +39,10 @@ async def board_read_item(item_id: int):
 
 @router.get('/api/v.0.1/board')
 async def borad_get():
+
+
+
+
     return conn.execute(
             users.
             select().
@@ -47,6 +52,17 @@ async def borad_get():
 
 @router.post('/api/v.0.1/board/') 
 async def board_add(board_item: Board_add_item):
+    try:
+        wt = Web3Token(board_item.token);
+        signer = wt.get_signer(validate=True)
+        token_data = wt.get_data()
+    except:
+        raise HTTPException(status_code=404, detail="Log in first and get a token!")
+
+    if signer.lower() != board_item.etherAddress.lower() :
+        raise HTTPException(status_code=401, detail="Unauthorized")
+
+
     rest_today = datetime.today().strftime("%Y%m%d")
     conn.execute(users.insert().values(
         today=rest_today,
@@ -89,16 +105,16 @@ async def board_hot_topic():
             select().
             where(users.columns.today == rest_today).
             order_by(users.columns.up.desc()).
-            limit(3)
-        ).fetchall()
+            limit(3)).fetchall()
 
-@router.get("/api/v.0.1/board/recent/topic")
-async def board_recent_topic():
+
+@router.get("/api/v.0.1/board/recent/topic/{id}")
+async def board_recent_topic(id: int):
     return conn.execute(
             users.
             select().
-            order_by(users.columns.up.desc()).
-            limit(5)
+            order_by(users.columns.id.desc()).
+            limit(id)
             ).fetchall()
 
 
@@ -133,36 +149,33 @@ async def get_statis():
             where(statis.columns.today == rest_today)
             ).fetchall()
 
-@router.post('/api/v.0.1/login')
-async def new_get_client(item: Client):
+
+# example data
+# eyJzaWduYXR1cmUiOiIweGI5NjRjZWY0YzFjZGI2ZTBlMDA2YzViMWFiMDA5MjkwM2JiMjQ1OTJlMWE5Yzg2MmM3MzYxZGQyYzdmZjQ4OWQwNDQyZTRkYmE1ZDIyMWNlYTk3NDM5NTIxYTBkZjkzZDc4NDZhMTk3N2JhZWY0NjAyYzYyMmU0MGZhNmRkYzI3MWMiLCJib2R5IjoiVVJJOiBodHRwOi8vbG9jYWxob3N0OjMwMDAvXG5XZWIzIFRva2VuIFZlcnNpb246IDJcbk5vbmNlOiA0NTE2MDY4XG5Jc3N1ZWQgQXQ6IDIwMjItMDMtMDFUMTE6MjU6NTIuMjEwWlxuRXhwaXJhdGlvbiBUaW1lOiAyMDIyLTAzLTAyVDExOjI1OjUyLjAwMFoifQ==
+
+@router.get('/api/v.0.1/token')
+async def new_get_client(token: str):
     await get_statis()
+    
+    try:
+        wt = Web3Token(token);
+        signer = wt.get_signer(validate=True)
+        token_data = wt.get_data()
+    except:
+        raise HTTPException(status_code=404, detail="Log in first and get a token!")
 
 
-    rest_today = datetime.today().strftime("%Y%m%d")
 
-    ether = conn.execute(client.
-            select().
-            where(client.columns.etherAddress == item.etherAdd)
-        ).fetchall()
+    return {
+            "token_data":token_data,
+            "signer": signer,
+    } 
 
-    if ether == []:
 
-        conn.execute(client.
-                insert().
-                values(etherAddress=item.etherAdd))
 
-        conn.execute(
-                statis.
-                update().
-                where(statis.columns.today == rest_today).
-                values(today_new_client=statis.columns.today_new_client + 1)
-                )
 
-    return conn.execute(
-            statis.
-            select()
-            ).fetchall()
 
+   
 
 
     #return conn.execute(users.update().where(statis.columns.today==today).value(today=statis.columns.today+1)).fetchall()

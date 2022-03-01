@@ -1,3 +1,9 @@
+a:link, a:visited, a:hover {
+  text-decoration: none;
+  color: inherit;
+
+}
+
 .sidebar-main {
   width: 20vw;
   background-color: #ffffff;

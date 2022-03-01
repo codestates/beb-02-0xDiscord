@@ -58,7 +58,7 @@
 }
 
 .main-statistic-middle {
-  margin-top: 5vh;
+  margin-top: 3vh;
   display: flex;
 }
 
@@ -66,7 +66,7 @@
   border-radius: 20px;
   background-color: #fff;
   width: 22vw;
-  height: 13vh;
+  height: 15vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -127,5 +127,98 @@
   padding: 4vh;
 }
 
+.main-statistic-middle-hottopic-main {
+  flex-grow:1;
+  display: flex;
+  flex-direction: column;
+  margin-left: 2vw;
+  margin-right: 2vw;
+}
 
-.main-footer {}
+.main-statistic-middle-hottopic-content-main {
+  background-color: #fff;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  flex-grow: 1;
+}
+
+.main-statistic-middle-hottopic-content {
+}
+
+.main-statistic-middle-hottopic-content-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #DEE8FF;
+  padding: 1.5vw 2vw 0 2vw;
+  font-size: 2vh;
+  font-weight: bold;
+}
+
+.main-statistic-middle-hottopic-content-div {
+  border-bottom: 1px solid #F4F7FE;
+  padding: 1.0vh;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5vw 2vw 0vw 2vw;
+  font-size: 1vw;
+  color: #1B2559;
+}
+
+
+
+.main-footer-recent-main {
+  margin-top: 3vh;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-footer-recent-content-main {
+  flex-grow: 1;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+
+.main-footer-recent-conent-header {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #DEE8FF;
+  color: #1B2559;
+  font-size: 2vh;
+  font-weight: bold;
+  padding: 1.5vw 1.5vw 0.5vw 1.5vw;
+}
+
+.main-footer-recent-content-header-author {
+  text-align: left;
+  flex-grow: 1;
+}
+
+.main-footer-recent-content-header-title {
+  flex-grow: 4;
+}
+
+.main-footer-recent-content-header-up {
+  text-align: center;
+  flex-grow: 1;
+}
+
+.main-footer-recent-content-div {
+  display: flex;
+  padding: 2vh;
+  border-bottom: 1px solid #F4F7FE;
+  color: #1B2559;
+  font-size: 2vh;
+}
+
+.main-footer-recent-div-address {
+  flex-grow: 1;
+}
+.main-footer-recent-div-title {
+  flex-grow: 4;
+}
+.main-footer-recent-div-up {
+  flex-grow: 1;
+}
