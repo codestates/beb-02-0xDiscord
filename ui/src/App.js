@@ -5,6 +5,8 @@ import Sidebar from './componant/sidebar.js'
 import MainIndex from './componant/main-index.js'
 import Profile from './componant/right-profile.js'
 
+import {useState, useEffect} from 'react'
+
 const test = () => {
   
   const PRIVATE_KEY = '1b95ae5c385641c009c25f89ff62e7088854b5cc39a6107654a623a1039e249b';
@@ -43,22 +45,41 @@ const test = () => {
 
 
 function App() {
-  /* web3.eth.accounts.signTransaction(rawTrx, PRIVATE_KEY)
-    .then(signedTx => web3.eth.sendSignedTransaction(signedTx.rawTransaction))
-    .then(req => {
-      console.log(req);
-    })
-   */ 
+
+   const [acc, setAcc] = useState(() => JSON.parse(window.localStorage.getItem("account")));
+  const [web3, setWeb3] = useState();
 
   
+
+
+  const login_eth = async () => {
+    if (typeof window.ethereum === 'undefined') {
+      console.log("meta meta")
+      window.open("https://metamask.io/download.html");
+    }
+
+    const accounts = await window.ethereum.request({method: 'eth_requestAccounts'})
+    const account = accounts[0];
+    const web3 = new Web3(window.ethereum);
+    setAcc(account);
+    setWeb3(web3);
+  }
+
+
+  useEffect(() => {
+    window.localStorage.setItem("account", JSON.stringify(acc));
+  }, [web3, acc]);
+
+
+ 
 
 
 
   return (
     <div className="App">
       <Sidebar/>
-      <MainIndex/>
-      <Profile/>
+      <MainIndex acc={acc} />
+      <Profile login={login_eth}/>
 
     </div>
   );

@@ -1,4 +1,131 @@
 .main-index {
   width: 55vw;
   height: 100vh;
+  padding: 2vw;
+  display: flex;
+  flex-direction: column;
 }
+
+.main-header {
+}
+
+.main-statistic-header {
+  margin-top: 3.5vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.main-statistic-token {
+  display: flex;
+  justify-content: space-evenly;
+  height: 13vh;
+  width: 16vw;
+  background-color: #fff;
+  align-items: center;
+  border-radius: 20px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+.main-statistic-title {
+  color: #A3AED0;
+}
+
+
+.main-statistic-token-symbol {
+  background: linear-gradient(135deg, #868CFF 0%, #4318FF 100%);
+  border-radius: 10vh;
+  padding: 1vh;
+}
+
+.main-statistic-activity {
+  background: linear-gradient(135deg, #868CFF 0%, #4318FF 100%);
+  display: flex;
+  justify-content: space-evenly;
+  height: 13vh;
+  width: 16vw;
+
+  align-items: center;
+  border-radius: 20px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.main-statistic-activity-title {
+  color: #E9EDF7;
+}
+.main-statistic-activity-num {
+  color: #fff;
+  font-size: 1.5vw;
+}
+
+.main-statistic-middle {
+  margin-top: 5vh;
+  display: flex;
+}
+
+.main-statistic-middle-totalsales {
+  border-radius: 20px;
+  background-color: #fff;
+  width: 22vw;
+  height: 13vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+.main-statistic-middle-totalsales-header {
+  padding-bottom: 1.5vh;
+}
+.main-statistic-middle-totalsales-title {
+  color: #A3AED0;
+  font-size: 1.9vh;
+}
+.main-statistic-middle-totalsales-footer {
+  color: #1B2559;
+  font-size: 1.5vh;
+}
+
+.main-statistic-middle-totalsales-left {
+  padding: 4vh;
+}
+
+.main-statistic-middle-totalsales-right {
+  background: linear-gradient(180deg, #868CFF 0%, #4318FF 100%);
+  padding: 2vh;
+  margin-right: 3vh;
+  border-radius: 7px;
+}
+
+
+.main-statistic-middle-siteuser {
+  border-radius: 20px;
+  background-color: #fff;
+  height: 13vh;
+  width: 22vw;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  margin-top: 3vh;
+}
+.main-statistic-middle-siteuser-title{
+  color: #A3AED0;
+  font-size: 1.9vh;
+}
+
+.main-statistic-middle-siteuser-header {
+  padding-bottom: 1.5vh;
+}
+.main-statistic-middle-siteuser-footer {
+  color: #1B2559;
+  font-size: 1.5vh;
+}
+.main-statistic-middle-siteuser-num {
+  color: #5D5FEF;
+}
+
+.main-statistic-middle-siteuser-left {
+  padding: 4vh;
+}
+
+
+.main-footer {}

@@ -1,9 +1,11 @@
 import '../static/right-profile.css'
 
-function Profile() {
+function Profile({login}) {
 
   return (
     <div className="right-profile">
+      <button onClick={login}> cak</button>
+
     </div>
   )
 

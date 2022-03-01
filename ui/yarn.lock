@@ -2770,6 +2770,13 @@
   "resolved" "https://registry.npmjs.org/axe-core/-/axe-core-4.4.1.tgz"
   "version" "4.4.1"
 
+"axios@^0.26.0":
+  "integrity" "sha512-lKoGLMYtHvFrPVt3r+RBMp9nh34N0M8zEfCWqdWZx6phynIEhQqAdydpyBAAG211zlhX9Rgu08cOamy6XjE5Og=="
+  "resolved" "https://registry.npmjs.org/axios/-/axios-0.26.0.tgz"
+  "version" "0.26.0"
+  dependencies:
+    "follow-redirects" "^1.14.8"
+
 "axobject-query@^2.2.0":
   "integrity" "sha512-Td525n+iPOOyUQIeBfcASuG6uJsDOITl7Mds5gFyerkWiX7qhUTdYUBlSgNMyVqtSJqwpt1kXGLdUt6SykLMRA=="
   "resolved" "https://registry.npmjs.org/axobject-query/-/axobject-query-2.2.0.tgz"
@@ -5168,7 +5175,7 @@
   "resolved" "https://registry.npmjs.org/flatted/-/flatted-3.2.5.tgz"
   "version" "3.2.5"
 
-"follow-redirects@^1.0.0":
+"follow-redirects@^1.0.0", "follow-redirects@^1.14.8":
   "integrity" "sha512-MQDfihBQYMcyy5dhRDJUHcw7lb2Pv/TuE6xP1vyraLukNDHKbDxDNaOE3NbCAdKQApno+GPRyo1YAp89yCjK4w=="
   "resolved" "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.14.9.tgz"
   "version" "1.14.9"
@@ -8435,7 +8442,7 @@
     "kleur" "^3.0.3"
     "sisteransi" "^1.0.5"
 
-"prop-types@^15.8.1":
+"prop-types@^15.5.8", "prop-types@^15.6.0", "prop-types@^15.6.2", "prop-types@^15.8.1":
   "integrity" "sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg=="
   "resolved" "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz"
   "version" "15.8.1"
@@ -8626,6 +8633,16 @@
     "object-assign" "^4.1.1"
     "scheduler" "^0.20.2"
 
+"react-dom@^16.0.0":
+  "integrity" "sha512-1gCeQXDLoIqMgqD3IO2Ah9bnf0w9kzhwN5q4FGnHZ67hBm9yePzB5JJAIQCc8x3pFnNlwFq4RidZggNAAkzWWw=="
+  "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-16.14.0.tgz"
+  "version" "16.14.0"
+  dependencies:
+    "loose-envify" "^1.1.0"
+    "object-assign" "^4.1.1"
+    "prop-types" "^15.6.2"
+    "scheduler" "^0.19.1"
+
 "react-error-overlay@^6.0.10":
   "integrity" "sha512-mKR90fX7Pm5seCOfz8q9F+66VCc1PGsWSBxKbITjfKVQHMNF2zudxHnMdJiB1fRCb+XsbQV9sO9DCkgsMQgBIA=="
   "resolved" "https://registry.npmjs.org/react-error-overlay/-/react-error-overlay-6.0.10.tgz"
@@ -8640,6 +8657,15 @@
   "integrity" "sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w=="
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz"
   "version" "17.0.2"
+
+"react-mini-chart@^0.1.3":
+  "integrity" "sha512-82KPl8vwfT/O0zNEpiFoYc0taCQs45DukG5CuNFnbIROt03AGpOUhegnNvRJoHPyN6YAatrVf6JBB2KjLAnYOg=="
+  "resolved" "https://registry.npmjs.org/react-mini-chart/-/react-mini-chart-0.1.3.tgz"
+  "version" "0.1.3"
+  dependencies:
+    "prop-types" "^15.6.0"
+    "react" "^16.0.0"
+    "react-dom" "^16.0.0"
 
 "react-refresh@^0.11.0", "react-refresh@>=0.10.0 <1.0.0":
   "integrity" "sha512-F27qZr8uUqwhWZboondsPx8tnC3Ct3SxZA3V5WyEvujRyyNv0VYPhoBg1gZ8/MV5tubQp76Trw8lTv9hzRBa+A=="
@@ -8701,13 +8727,29 @@
   optionalDependencies:
     "fsevents" "^2.3.2"
 
-"react@*", "react@^17.0.2", "react@>= 16", "react@17.0.2":
+"react-trend@^1.2.5":
+  "integrity" "sha512-8//dg52xjPKkWPcd7Iml5WfwellgBpeILbN2tKhTP5gacJbg8jDTsNoEJboN9ATf9OllODpo4/gXhguNAIo7gg=="
+  "resolved" "https://registry.npmjs.org/react-trend/-/react-trend-1.2.5.tgz"
+  "version" "1.2.5"
+  dependencies:
+    "prop-types" "^15.5.8"
+
+"react@", "react@*", "react@^17.0.2", "react@>= 16", "react@17.0.2":
   "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   "version" "17.0.2"
   dependencies:
     "loose-envify" "^1.1.0"
     "object-assign" "^4.1.1"
+
+"react@^16.0.0", "react@^16.14.0":
+  "integrity" "sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g=="
+  "resolved" "https://registry.npmjs.org/react/-/react-16.14.0.tgz"
+  "version" "16.14.0"
+  dependencies:
+    "loose-envify" "^1.1.0"
+    "object-assign" "^4.1.1"
+    "prop-types" "^15.6.2"
 
 "readable-stream@^2.0.1":
   "integrity" "sha512-Ebho8K4jIbHAxnuxi7o42OrZgF/ZTNcsZj6nRKyUmkhLFq8CHItp/fy6hQZuZmP/n3yZ9VBUbp4zz/mX8hmYPw=="
@@ -9043,6 +9085,14 @@
   "version" "5.0.1"
   dependencies:
     "xmlchars" "^2.2.0"
+
+"scheduler@^0.19.1":
+  "integrity" "sha512-n/zwRWRYSUj0/3g/otKDRPMh6qv2SYMWNq85IEa8iZyAv8od9zDYpGSnpBEjNgcMNq6Scbu5KfIPxNF72R/2EA=="
+  "resolved" "https://registry.npmjs.org/scheduler/-/scheduler-0.19.1.tgz"
+  "version" "0.19.1"
+  dependencies:
+    "loose-envify" "^1.1.0"
+    "object-assign" "^4.1.1"
 
 "scheduler@^0.20.2":
   "integrity" "sha512-2eWfGgAqqWFGqtdMmcL5zCMK1U8KlXv8SQFGglL3CEtd0aDVDWgeF/YoCmvln55m5zSk3J/20hTaSBeSObsQDQ=="
