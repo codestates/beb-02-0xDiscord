@@ -1,6 +1,8 @@
 import '../static/main-index.css'
 import { Icon } from '@iconify/react';
 import Trend from 'react-trend';
+import HotTopic from './hot-topic.js'
+import RecentTopic from './recent-board-content.js'
 
 function MainIndex({acc}) {
   
@@ -58,7 +60,8 @@ function MainIndex({acc}) {
       <div className="main-statistic-header">
         <div className="main-statistic-token">
           <div className="main-statistic-token-symbol">
-            <Icon icon="healthicons:money-bag-outline" color="white" height="4vh" />
+            <Icon icon="dashicons:money-alt" color="white" width="3.6vh"/>
+
           </div>
           <div>
             <div className="main-statistic-title">
@@ -87,7 +90,7 @@ function MainIndex({acc}) {
         </div>
         <div className="main-statistic-token">
           <div className="main-statistic-token-symbol">
-            <Icon icon="fluent:people-28-filled" color="white" height="4vh" />
+            <Icon icon="fluent:people-28-filled" color="white" height="3.6vh" />
           </div>
           <div>
             <div className="main-statistic-title">
@@ -141,11 +144,41 @@ function MainIndex({acc}) {
           </div>
         </div>
 
-        <div className="main-statistic-middle-hottopic">
+        <div className="main-statistic-middle-hottopic-main">
+          <div className="main-statistic-middle-hottopic-header">
+            Today Hot Topic
+          </div>
+          <div className="main-statistic-middle-hottopic-content-main">
+            <div className="main-statistic-middle-hottopic-content-header">
+              <div>
+                Title
+              </div>
+              <div>
+                UP
+              </div>
+            </div>
+            <HotTopic />
+          </div>
         </div>
       </div>
-      <div className="main-footer">
-          hello
+      <div className="main-footer-recent-main">
+        <div className="main-footer-recent-header">
+          Recent
+        </div>
+        <div className="main-footer-recent-content-main">
+          <div className="main-footer-recent-conent-header">
+            <div className="main-footer-recent-content-header-author">
+              Author
+            </div>
+            <div className="main-footer-recent-content-header-title">
+              Title
+            </div>
+            <div className="main-footer-recent-content-header-up">
+              UP
+            </div>
+          </div>
+          <RecentTopic/>
+        </div>
       </div>
     </div>
   )

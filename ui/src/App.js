@@ -4,6 +4,10 @@ import abi from './abi/reward.js'
 import Sidebar from './componant/sidebar.js'
 import MainIndex from './componant/main-index.js'
 import Profile from './componant/right-profile.js'
+import TopicView from './componant/board-view.js'
+
+import { Route, Routes } from 'react-router-dom';
+import Web3Token from 'web3-token'
 
 import {useState, useEffect} from 'react'
 
@@ -46,9 +50,10 @@ const test = () => {
 
 function App() {
 
-   const [acc, setAcc] = useState(() => JSON.parse(window.localStorage.getItem("account")));
+  const [acc, setAcc] = useState(() => JSON.parse(window.localStorage.getItem("account")));
   const [web3, setWeb3] = useState();
-
+  const [token, setToken] = useState(() => JSON.parse(window.localStorage.getItem("token")));
+  
   
 
 
@@ -63,12 +68,17 @@ function App() {
     const web3 = new Web3(window.ethereum);
     setAcc(account);
     setWeb3(web3);
+    const token_app = await Web3Token.sign(msg => web3.eth.personal.sign(msg, acc), '1d');
+    setToken(token_app);
+    window.localStorage.setItem("token", JSON.stringify(token));
+    console.log(token);
   }
 
 
   useEffect(() => {
     window.localStorage.setItem("account", JSON.stringify(acc));
   }, [web3, acc]);
+
 
 
  
@@ -78,7 +88,10 @@ function App() {
   return (
     <div className="App">
       <Sidebar/>
-      <MainIndex acc={acc} />
+      <Routes>
+        <Route path="/" element={<MainIndex acc={acc} />}/>
+        <Route  path="/board/view/:id" element={<TopicView/> } />
+      </Routes>
       <Profile login={login_eth}/>
 
     </div>
