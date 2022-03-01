@@ -48,7 +48,7 @@ class ViewBoard extends React.Component {
         <div className="board-view-content-up-main" onClick={() => upRequest(this.state.viewData.id)}>
           <div className="board-view-content-up-sup">
             <div className="board-view-conent-up-icon">
-              <Icon icon="bi:hand-thumbs-up-fill" color="white" height="4vh" />
+              <Icon icon="bi:hand-thumbs-up-fill" color="white" height="2vh" />
             </div>
             <div>
               UP

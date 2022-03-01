@@ -25,7 +25,7 @@ class HotTopic extends React.Component {
       {
         this.state.hotTopic.map(
             hotTopic => 
-            <div>
+            <div className="main-statistic-middle-hottopic-content-div">
                 <div>
                   <Link to={`/board/view/${hotTopic.id}`}>{hotTopic.title}</Link>
 

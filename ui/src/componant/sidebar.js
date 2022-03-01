@@ -111,7 +111,7 @@ function Sidebar() {
           <div className="sidebar-link-icon-name">
           <Icon icon="gg:clapper-board" color={style ? style[2]["icon"] : deactiveIconStyle} height="24" />
             <div style={style ? style[2]["text"] : deactiveStyle} className="sidebar-link-name" onClick={(e) => helo(2, e)}>
-              Community
+              <Link to="/board" > Community </Link> 
             </div>
           </div>
           <div style={style ? style[2]["line"] : null}>

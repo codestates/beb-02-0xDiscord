@@ -15,6 +15,7 @@ class Board_add_item(BaseModel):
     etherAddress: str
     title: str
     content: str
+    token: str
 
 
 class Item(BaseModel):
@@ -38,6 +39,10 @@ async def board_read_item(item_id: int):
 
 @router.get('/api/v.0.1/board')
 async def borad_get():
+
+
+
+
     return conn.execute(
             users.
             select().
@@ -47,6 +52,17 @@ async def borad_get():
 
 @router.post('/api/v.0.1/board/') 
 async def board_add(board_item: Board_add_item):
+    try:
+        wt = Web3Token(board_item.token);
+        signer = wt.get_signer(validate=True)
+        token_data = wt.get_data()
+    except:
+        raise HTTPException(status_code=404, detail="Log in first and get a token!")
+
+    if signer.lower() != board_item.etherAddress.lower() :
+        raise HTTPException(status_code=401, detail="Unauthorized")
+
+
     rest_today = datetime.today().strftime("%Y%m%d")
     conn.execute(users.insert().values(
         today=rest_today,
@@ -92,13 +108,13 @@ async def board_hot_topic():
             limit(3)).fetchall()
 
 
-@router.get("/api/v.0.1/board/recent/topic")
-async def board_recent_topic():
+@router.get("/api/v.0.1/board/recent/topic/{id}")
+async def board_recent_topic(id: int):
     return conn.execute(
             users.
             select().
             order_by(users.columns.id.desc()).
-            limit(5)
+            limit(id)
             ).fetchall()
 
 
