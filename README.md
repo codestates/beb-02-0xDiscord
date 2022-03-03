@@ -90,4 +90,4 @@ open serverurl:port/docs
 
 
 ### License
-React is [MIT licensed](./LICENSE)
+0XDiscord is [MIT licensed](./LICENSE)
