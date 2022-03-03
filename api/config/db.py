@@ -9,7 +9,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # DB 설정 파일 받아오기
-SECRET_FILE = os.path.join(BASE_DIR, 'secrets.json')
+SECRET_FILE = os.path.join(BASE_DIR, 'db_secrets.json')
 
 # DB 설정 json 읽기
 secrets = json.loads(open(SECRET_FILE).read())

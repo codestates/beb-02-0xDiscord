@@ -5,14 +5,14 @@ import 'react-markdown-editor-lite/lib/index.css';
 import ReactMarkdown from 'https://cdn.skypack.dev/react-markdown@7?dts'
 import "../static/view-board.css"
 import { Icon } from '@iconify/react';
-
+import config from '../config/config.json'
 
 const mdParser = new MarkdownIt();
 function handleEditorChange({ html, text }) {
   console.log('handleEditorChange', html, text);
 }
 const upRequest = async (id) => {
-  await axios.get(`http://localhost:8000/api/v.0.1/board/content/up/${id}`)
+  await axios.get(config["API_SERVER_CONTENT_UP"] + id)
 }
 
 class ViewBoard extends React.Component {
@@ -23,11 +23,10 @@ class ViewBoard extends React.Component {
 
   componentDidMount() {
     console.log(this.props.test)
-    axios.get(`http://localhost:8000/api/v.0.1/board/content/${this.props.id}`)
+    axios.get( config["API_SERVER_CONTENT_VIEW"]+this.props.id)
       .then(res => {
         const resData = res.data;
         this.setState({viewData: resData[0]});
-        console.log(this.state.viewData)
       });
 
   }

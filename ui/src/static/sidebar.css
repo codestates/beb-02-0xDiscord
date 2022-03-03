@@ -1,7 +1,10 @@
 a:link, a:visited, a:hover {
   text-decoration: none;
   color: inherit;
-
+}
+a {
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
 }
 
 .sidebar-main {

@@ -1,0 +1,9 @@
+{
+  "API_SERVER_URL": "http://localhost:8000/",
+  "API_SERVER_BOARD_POST": "http://localhost:8000/api/v0.1/board",
+  "API_SERVER_TOPIC_RECENT": "http://localhost:8000/api/v.0.1/board/recent/topic/",
+  "API_SERVER_TOPIC_HOT": "http://localhost:8000/api/v.0.1/board/hot_topic/" ,
+  "API_SERVER_CONTENT_UP": "http://localhost:8000/api/v.0.1/board/content/up/",
+  "API_SERVER_CONTENT_VIEW": "http://localhost:8000/api/v.0.1/board/content/",
+  "CONTRACT_ADDRESS": "0x33d77fE45342E4Bf5Fb7a0A3d312f65deE5EaD83"
+}

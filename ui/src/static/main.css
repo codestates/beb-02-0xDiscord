@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
 
+a:link, a:visited, a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+a {
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
+}
 
 html, body, #root {
   width: 100vw; 

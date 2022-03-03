@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import config from '../config/config.json'
 
 class RecentTopic extends React.Component {
   state = {
@@ -8,7 +9,7 @@ class RecentTopic extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("http://localhost:8000/api/v.0.1/board/recent/topic/5")
+    axios.get(config["API_SERVER_TOPIC_RECENT"] + 5)
       .then(res => {
         const resData = res.data;
         console.log(resData);

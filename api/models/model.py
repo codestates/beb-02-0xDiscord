@@ -28,5 +28,14 @@ client = Table('client', meta,
             Column('etherAddress', String(255), nullable=False)
         )
 
+reward_t = Table('reward', meta,
+            Column('today', String(255), nullable=False, primary_key=True),
+            Column('rewardEndTime', String(255))
+        )
+
+reward_address = Table('reward_address', meta,
+        Column('id', Integer, primary_key=True),
+        Column('address', String(255), nullable=True)
+        )
 
 meta.create_all(engine)
