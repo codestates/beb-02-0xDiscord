@@ -7,6 +7,7 @@ import {useState} from 'react'
 import { Icon } from '@iconify/react';
 import "../static/board-write.css"
 import { useNavigate } from 'react-router-dom';
+import config from '../config/config.json'
 
 
 function Write({login_eth, token, account}) {
@@ -19,8 +20,8 @@ function Write({login_eth, token, account}) {
 
   function handleEditorChange({ html, text }) {
     setMD(text);
-    console.log(MD);
   }
+
   function handleChange(event) {
     setTitle(event.target.value);
   }
@@ -32,7 +33,7 @@ function Write({login_eth, token, account}) {
       etherAddress: account,
       token: JSON.parse(window.localStorage.getItem("token"))
     };
-    const res = await axios.post("http://localhost:8000/api/v.0.1/board/",req);
+    const res = await axios.post(config["API_SERVER_BOARD_POST"],req);
     console.log("res", res.data);
  
 

@@ -8,34 +8,36 @@ function Sidebar() {
 
         //<img src={Log} type="image/svg+xml"/> 
   const [style, setStyle] = useState(() => JSON.parse(window.localStorage.getItem("style")));
-  const activeIconStyle = "#4318FF";
+  const [before, setBefore] = useState(6);
   const deactiveIconStyle = "#A3AED0";
 
   
   var varStyle = {};
+
+  const activeIconStyle = "#4318FF";
   const activeTextStyle = {
-    coloe: "#1B2559"
+    color: "#1B2559"
   }
   const activeLine = {
     "border-right": "3px solid #4318FF"
   }
-  
+
+
   const deactiveStyle = {
     color: "#A3AED0",
+    "text-decoration": "none"
   }
   const deactiveLineStyle = {
     color: "#ffffff"
   }
 
   useEffect(() => {
-    window.localStorage.setItem("style", JSON.stringify(style));
-  }, [style]);
 
+    style[before]["text"] = activeTextStyle;
+    style[before]["icon"] = activeIconStyle;
+    style[before]["line"] = activeLine;
 
-
-  const helo = (a, e) => {
-    
-    for(let i = 0; i < 10; i++) {
+    for(let i = 0; i < 7; i++) {
       varStyle[i] = {
         text: deactiveStyle,
         icon: deactiveIconStyle,
@@ -43,12 +45,24 @@ function Sidebar() {
       }
     }
 
-    varStyle[a]["text"] = activeTextStyle;
-    varStyle[a]["icon"] = activeIconStyle;
-    varStyle[a]["line"] = activeLine;
-
     setStyle(varStyle);
-    console.log(style);
+  }, []);
+
+
+
+  const helo = (a, e) => {
+
+    style[before]["text"] = deactiveStyle;
+    style[before]["icon"] = deactiveIconStyle;
+    style[before]["line"] = deactiveLineStyle;
+
+    style[a]["text"] = activeTextStyle;
+    style[a]["icon"] = activeIconStyle;
+    style[a]["line"] = activeLine;
+
+
+    setBefore(a);
+    setStyle(style);
   }
 
   return (
@@ -82,7 +96,7 @@ function Sidebar() {
               Activity
             </div>
           </div>
-          <div style={style ? style[5]["line"] : null}>
+          <div style={style[5]["line"]}>
           </div>
         </div>
         <div className="sidebar-link-div-main" style={activeTextStyle}>
@@ -111,7 +125,7 @@ function Sidebar() {
           <div className="sidebar-link-icon-name">
           <Icon icon="gg:clapper-board" color={style ? style[2]["icon"] : deactiveIconStyle} height="24" />
             <div style={style ? style[2]["text"] : deactiveStyle} className="sidebar-link-name" onClick={(e) => helo(2, e)}>
-              <Link to="/board" > Community </Link> 
+              <Link to="/board" style={{textDecoration: "none" }}> Community </Link> 
             </div>
           </div>
           <div style={style ? style[2]["line"] : null}>

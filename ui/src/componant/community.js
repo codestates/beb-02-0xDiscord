@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import "../static/community.css"
 import { Icon } from '@iconify/react';
+import config from "../config/config.json"
+
 
 class Community extends React.Component {
 
@@ -11,7 +13,7 @@ class Community extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("http://localhost:8000/api/v.0.1/board/recent/topic/20")
+    axios.get(config["API_SERVER_TOPIC_RECENT"] + 20)
       .then(res => {
         const resData = res.data;
         console.log(resData);

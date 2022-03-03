@@ -4,25 +4,14 @@ import Trend from 'react-trend';
 import HotTopic from './hot-topic.js'
 import RecentTopic from './recent-board-content.js'
 
-function MainIndex({acc}) {
+function MainIndex({acc, siteToken, todaySite, newClient}) {
   
   const MyComponent = () => <Trend data={[0, 10, 5, 22, 3.6, 11]} />;
  
   
-  const YourComponent = () => (
-    <Trend
-      smooth
-      autoDraw
-      autoDrawDuration={3000}
-      autoDrawEasing="ease-out"
-      data={[0,2,5,9,5,10,3,1,2,10]}
-      gradient={['#4318FF', '#fff']}
-      radius={4.8}
-      strokeWidth={4.1}
-      strokeLinecap={'butt'}
-      width={50}
-    />
-  );
+  var dataNew = [1,2,3,4,10]
+  var dataToday = [1,2,3,10,1,5,3]
+
 
   const ActityTrend = () => (
     <Trend
@@ -38,12 +27,6 @@ function MainIndex({acc}) {
       width={50}
     />
   );
-
-
-
-
-
-
 
   const token = 321; 
 
@@ -61,18 +44,29 @@ function MainIndex({acc}) {
         <div className="main-statistic-token">
           <div className="main-statistic-token-symbol">
             <Icon icon="dashicons:money-alt" color="white" width="3.6vh"/>
-
           </div>
           <div>
             <div className="main-statistic-title">
               Your Token
             </div>
             <div>
-              {token}
+              {siteToken ?  siteToken.slice(0, 4) + "..." : null }
             </div>
           </div>
           <div>
-            <YourComponent/>
+
+          <Trend
+            smooth
+            autoDraw
+            autoDrawDuration={3000}
+            autoDrawEasing="ease-out"
+            data={dataToday}
+            gradient={['#4318FF', '#fff']}
+            radius={4.8}
+            strokeWidth={4.1}
+            strokeLinecap={'butt'}
+            width={50}
+          />
           </div>
         </div>
         <div className="main-statistic-activity">
@@ -97,11 +91,22 @@ function MainIndex({acc}) {
               New Clients
             </div>
             <div>
-              {token}
+              {newClient}
             </div>
           </div>
           <div>
-            <YourComponent/>
+          <Trend
+            smooth
+            autoDraw
+            autoDrawDuration={3000}
+            autoDrawEasing="ease-out"
+            data={dataNew}
+            gradient={['#4318FF', '#fff']}
+            radius={4.8}
+            strokeWidth={4.1}
+            strokeLinecap={'butt'}
+            width={50}
+          />
           </div>
         </div>
       </div>
@@ -134,7 +139,7 @@ function MainIndex({acc}) {
                     Today' Site USERS
                   </div>
                   <div className="main-statistic-middle-siteuser-num">
-                    3,200
+                    {todaySite ? todaySite : "0"}
                   </div>
                 </div>
                 <div className="main-statistic-middle-siteuser-footer">
