@@ -13,7 +13,7 @@ from models.model import reward_t, reward_address
 
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-SECRET_FILE = os.path.join(BASE_DIR, "config", "web3_secrets.json")
+SECRET_FILE = os.path.join(BASE_DIR, "config", "web3_secrets_tmp.json")
 SECRET_FILE_JSON = json.loads(open(SECRET_FILE).read())
 SECRET_FILE_WEB3 = SECRET_FILE_JSON["web3"]
 

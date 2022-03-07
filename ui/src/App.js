@@ -26,7 +26,7 @@ function App() {
   const [newClient, setTodayNewClient] = useState();
 
 
-  const CONTRACT_ADDRESS = config["CONTENT_ADDRESS"]
+  const CONTRACT_ADDRESS = config["CONTRACT_ADDRESS"]
 
 
   useEffect( () => {
