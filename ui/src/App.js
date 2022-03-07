@@ -35,8 +35,21 @@ function App() {
       const resData = res.data[0]
       setTodaySite(resData["today_site_user"]);
       setTodayNewClient(resData["today_new_client"]);
+
+      var varStyle = {};
+      for(let i = 0; i < 10; i++) {
+        varStyle[i] = {
+          text: "",
+          icon: "",
+          line: "",
+        }
+      }
+     window.localStorage.setItem("style", JSON.stringify(varStyle));
     }
     statis();
+
+    
+
   }, []);
   
 

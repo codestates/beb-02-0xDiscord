@@ -33,10 +33,6 @@ function Sidebar() {
 
   useEffect(() => {
 
-    style[before]["text"] = activeTextStyle;
-    style[before]["icon"] = activeIconStyle;
-    style[before]["line"] = activeLine;
-
     for(let i = 0; i < 7; i++) {
       varStyle[i] = {
         text: deactiveStyle,
@@ -44,6 +40,10 @@ function Sidebar() {
         line: deactiveLineStyle,
       }
     }
+    /* style[before]["text"] = activeTextStyle;
+    style[before]["icon"] = activeIconStyle;
+    style[before]["line"] = activeLine;
+*/
 
     setStyle(varStyle);
   }, []);
@@ -96,7 +96,7 @@ function Sidebar() {
               Activity
             </div>
           </div>
-          <div style={style[5]["line"]}>
+          <div style={style ? style[5]["line"] : null}>
           </div>
         </div>
         <div className="sidebar-link-div-main" style={activeTextStyle}>
